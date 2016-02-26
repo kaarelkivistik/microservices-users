@@ -1,9 +1,3 @@
 # Users microservice
 
-## Events
-
-### Publishes
-none
-
-### Consumes
-none
+REST API on port 3290
