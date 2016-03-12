@@ -2,7 +2,7 @@ sudo: required
 language: javascript
 services:
 - docker
-env: PROJECT_ID="stonestick-instant-messaging" EMAIL="pohlamoos@gmail.com"
+env: PROJECT_ID="stonestick-instant-messaging" EMAIL="pohlamoos@gmail.com" CLOUDSDK_PYTHON_SITEPACKAGES=1
 install:
 - gcloud auth activate-service-account "$EMAIL" --key-file client-secret.json
 - gcloud config set project "$PROJECT_ID"
@@ -10,5 +10,7 @@ script:
 - docker build -t eu.gcr.io/$PROJECT_ID/users:$TRAVIS_COMMIT .
 - gcloud docker push eu.gcr.io/$PROJECT_ID/users:$TRAVIS_COMMIT
 before_install:
+- sudo apt-get -qq update
+- sudo apt-get install python-openssl -y
 - openssl aes-256-cbc -K $encrypted_e71a02fb9f1f_key -iv $encrypted_e71a02fb9f1f_iv
   -in client-secret.json.enc -out client-secret.json -d
