@@ -4,8 +4,9 @@ services:
 - docker
 env:
 - PROJECT_ID="stonestick-instant-messaging"
+- EMAIL="pohlamoos@gmail.com"
 install:
-- gcloud auth activate-service-account --key-file client-secret.json
+- gcloud auth activate-service-account "$EMAIL" --key-file client-secret.json
 - gcloud config set project "$PROJECT_ID"
 script:
 - docker build -t eu.gcr.io/$PROJECT_ID/users:$TRAVIS_COMMIT .
