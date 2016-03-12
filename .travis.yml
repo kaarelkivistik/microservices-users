@@ -11,6 +11,6 @@ script:
 - docker build -t eu.gcr.io/$PROJECT_ID/users:$TRAVIS_COMMIT .
 - gcloud docker push eu.gcr.io/$PROJECT_ID/users:$TRAVIS_COMMIT
 before_install:
-- pip install pyopenssl
+- sudo pip install pyopenssl
 - openssl aes-256-cbc -K $encrypted_e71a02fb9f1f_key -iv $encrypted_e71a02fb9f1f_iv
   -in client-secret.json.enc -out client-secret.json -d
