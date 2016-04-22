@@ -1,12 +1,12 @@
 {
   "name": "users",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Users microservice",
   "main": "index.js",
   "scripts": {
-	"build": "babel -o build.js index.jsx",
-	"start": "node build.js",
-    "develop": "babel-watch --watch *.jsx index.jsx",
+    "build": "babel --out-dir build src",
+    "start": "node build/app.js",
+    "develop": "babel-watch --watch src --watch *.js src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "pohlamoos@gmail.com",
@@ -21,6 +21,7 @@
     "amqplib": "^0.4.1",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
+    "minimist": "^1.2.0",
     "mongodb": "^2.1.7",
     "mongoose": "^4.4.5",
     "promise": "^7.1.1"
